@@ -1,10 +1,8 @@
 import React from 'react'
 
-export default function SearchField({setSearch}) {
-    const handleChange = (e) => {
-        setSearch(e.target.value);
-    }
+export default function SearchField({onChange}) {
+
     return (
-        <input type="text" onChange={handleChange}></input>
+        <input type="text" onChange={onChange}></input>
     )
 }
