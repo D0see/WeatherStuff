@@ -1,22 +1,12 @@
 import React from 'react'
 import styles from './PreviousMeteoButton.module.css'
 
-export default function PreviousMeteoButton({displayedData, cityName, cityData, setData, setListOfMeteos}) {
-    function handleCityClick(){
-        setData(cityData);
-    }
-    function handleXClick(){
-        setListOfMeteos(prev => {
-            const newListOfMeteos = {...prev};
-            delete newListOfMeteos[cityData.city_name];
-            return newListOfMeteos;
-           
-        })
-    }
+export default function PreviousMeteoButton({displayedData, cityName, onCityClick, onXClick}) {
+    
     return (
         <div className={`${styles.PreviousMeteo}`}>
-            <button className={`${styles.CityButton} ${cityName === displayedData.city_name ? styles.Selected: ""}`} onClick={handleCityClick}>{cityName}</button>
-            <button className={styles.XButton} onClick={handleXClick}>X</button>
+            <button className={`${styles.CityButton} ${cityName === displayedData?.city_name ? styles.Selected: ""}`} onClick={onCityClick}>{cityName}</button>
+            <button className={styles.XButton} onClick={onXClick}>X</button>
         </div>
     )
 }

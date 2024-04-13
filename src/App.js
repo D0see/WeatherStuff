@@ -1,50 +1,42 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "./containers/SearchBar";
-import SearchField from "./components/SearchField";
-import SearchButton from "./components/SearchButton";
 import DataVisualizer from "./containers/DataVisualizer";
 import PreviousMeteoButton from "./components/PreviousMeteoButton";
+import MeteosList from "./containers/MeteosList";
 import fetchWeatherData from "./utils/fetchWeatherData";
 import styles from "./App.module.css";
 
 function App() {
   const [search, setSearch] = useState("");
   const [displayedData, setData] = useState(null);
-  const [listofMeteos, setListOfMeteos] = useState({});
+  const [listOfMeteos, setlistOfMeteos] = useState({});
 
+  //Handles active city deletion
   useEffect(() => {
-    if (displayedData && listofMeteos) {
+    if (displayedData && listOfMeteos) {
       const cityName = displayedData.city_name;
-      const Meteos = Object.keys(listofMeteos);
+      const Meteos = Object.keys(listOfMeteos);
 
       if (!Meteos.includes(cityName)) {
         setData(null);
       }
     }
-  }, [displayedData, listofMeteos]);
+  }, [displayedData, listOfMeteos]);
 
   return (
     <div className={styles.Core}>
       <SearchBar
         className={styles.SearchBar}
         setSearch={setSearch}
-        onClick={() => fetchWeatherData(search, setData, setListOfMeteos)}
+        onClick={() => fetchWeatherData(search, setData, setlistOfMeteos)}
       />
       {displayedData && <DataVisualizer data={displayedData} />}
-      <div style={{ display: "flex" }}>
-        {Object.keys(listofMeteos).map((cityName, i) => {
-          return (
-            <PreviousMeteoButton
-              key={i}
-              displayedData={displayedData}
-              cityName={cityName}
-              cityData={listofMeteos[cityName]}
-              setData={setData}
-              setListOfMeteos={setListOfMeteos}
-            />
-          );
-        })}
-      </div>
+      <MeteosList
+        displayedData={displayedData}
+        setData={setData}
+        listOfMeteos={listOfMeteos}
+        setlistOfMeteos={setlistOfMeteos}
+      />
     </div>
   );
 }
