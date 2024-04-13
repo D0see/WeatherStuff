@@ -1,12 +1,12 @@
 .Core {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 40px;
   align-items: center;
 }
 
 .SearchBar {
   display: flex;
   gap: 15px;
-  margin: 20px;
+  margin-top: 40px;
 }

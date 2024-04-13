@@ -10,6 +10,11 @@
     height: 40px;
     width: fit-content;
     padding: 0 10px;
+    transition: background-color 0.15s linear;
+}
+
+.Selected {
+    background-color: gold;
 }
 
 .CityButton:hover {

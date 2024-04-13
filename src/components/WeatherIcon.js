@@ -10,6 +10,12 @@ export default function WeatherIcon({weatherDescription}) {
       case "Clear sky" : 
         setIconUrl("img/Sunny.png");
         break;
+      case "Few clouds" :
+        setIconUrl("img/PartlyCloudy.png");
+        break;
+      case "Broken clouds" :
+        setIconUrl("img/PartlyCloudy.png");
+        break;
       //might not be the correct term used by the Api 
       case "Rainy" : 
         setIconUrl("img/Rainy.png");
