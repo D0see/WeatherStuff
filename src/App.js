@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "./containers/SearchBar";
 import DataVisualizer from "./containers/DataVisualizer";
-import PreviousMeteoButton from "./components/PreviousMeteoButton";
 import MeteosList from "./containers/MeteosList";
 import fetchWeatherData from "./utils/fetchWeatherData";
 import styles from "./App.module.css";
@@ -23,11 +22,16 @@ function App() {
     }
   }, [displayedData, listOfMeteos]);
 
+  //Handles changes in the searchbar input value
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  }
+ 
   return (
     <div className={styles.Core}>
       <SearchBar
         className={styles.SearchBar}
-        setSearch={setSearch}
+        onChange={handleSearchChange}
         onClick={() => fetchWeatherData(search, setData, setlistOfMeteos)}
       />
       {displayedData && <DataVisualizer data={displayedData} />}

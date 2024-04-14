@@ -13,6 +13,9 @@ export default function WeatherIcon({weatherDescription}) {
       case "Few clouds" :
         setIconUrl("img/PartlyCloudy.png");
         break;
+      case "Overcast clouds" :
+        setIconUrl("img/PartlyCloudy.png");
+        break;
       case "Broken clouds" :
         setIconUrl("img/PartlyCloudy.png");
         break;

@@ -2,15 +2,11 @@ import React from 'react';
 import SearchField from '../components/SearchField';
 import SearchButton from '../components/SearchButton';
 
-export default function SearchBar({className, setSearch, onClick}) {
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  }
+export default function SearchBar({className, onChange, onClick}) {
 
   return (
     <div className={className}>
-        <SearchField onChange={handleChange} />
+        <SearchField onChange={onChange} />
         <SearchButton onClick={onClick}/>
     </div>
   )
